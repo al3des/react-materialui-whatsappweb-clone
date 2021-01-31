@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core"
 
 import Header from "../components/sidebar/header/Header"
 import ChatList from "../components/sidebar/chat-list/ChatList"
+import UserSettings from "../components/sidebar/settings/UserSettings"
 
 let useStyles = makeStyles({
   root: {
@@ -14,9 +15,12 @@ let useStyles = makeStyles({
 export default function SideBarContainer() {
   let classes = useStyles()
   return (
-    <div className={classes.root}>
-      <Header />
-      <ChatList />
-    </div>
+    <>
+      <div className={classes.root}>
+        <UserSettings />
+        <Header />
+        <ChatList />
+      </div>
+    </>
   )
 }

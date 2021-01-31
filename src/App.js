@@ -2,6 +2,7 @@ import { CssBaseline, makeStyles, Paper } from "@material-ui/core"
 import Conversation from "./containers/Conversation"
 import SideBar from "./containers/SideBar"
 import MessagesProvider from "./context/MessagesContext"
+import UserSettingsProvider from "./context/UserSettingsContext"
 
 let useStyles = makeStyles({
   root: {
@@ -19,7 +20,9 @@ function App() {
     <MessagesProvider>
       <Paper className={classes.root}>
         <CssBaseline />
-        <SideBar />
+        <UserSettingsProvider>
+          <SideBar />
+        </UserSettingsProvider>
         <Conversation />
       </Paper>
     </MessagesProvider>
