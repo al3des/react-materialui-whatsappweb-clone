@@ -1,4 +1,4 @@
-import contacts from "../../data/contacts"
+import contacts from "../../../data/contacts"
 import { Grid, makeStyles } from "@material-ui/core"
 import ContactItem from "./ContactItem"
 
