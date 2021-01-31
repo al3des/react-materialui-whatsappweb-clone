@@ -17,7 +17,7 @@ export default function ChatList() {
   return (
     <Grid container justify="space-between" className={classes.root}>
       {contacts.map((contact) => (
-        <Grid item xs={12} className={classes.contactItem}>
+        <Grid key={contact.id} item xs={12} className={classes.contactItem}>
           <ContactItem contact={contact} />
         </Grid>
       ))}
