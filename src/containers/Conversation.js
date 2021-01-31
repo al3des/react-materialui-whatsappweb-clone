@@ -9,7 +9,7 @@ let useStyles = makeStyles({
     minWidth: "500px",
     gridRow: "1 / -1",
     display: "grid",
-    gridTemplateRows: "minmax(50px, 1fr) 5.5fr minmax(30px, .5fr)",
+    gridTemplateRows: "minmax(50px, 1fr) 10fr minmax(30px, 1fr)",
   },
 })
 

@@ -1,13 +1,13 @@
 import { makeStyles } from "@material-ui/core"
 
-import Header from "../components/sidebar/Header"
-import ChatList from "../components/sidebar/ChatList"
+import Header from "../components/sidebar/header/Header"
+import ChatList from "../components/sidebar/chat-list/ChatList"
 
 let useStyles = makeStyles({
   root: {
     gridRow: "1 / -1",
     display: "grid",
-    gridTemplateRows: "minmax(50px, 1fr) 6fr",
+    gridTemplateRows: "minmax(50px, 2fr) 10fr",
   },
 })
 
