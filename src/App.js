@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, makeStyles, Paper } from "@material-ui/core"
+import Conversation from "./containers/Conversation"
+import SideBar from "./containers/SideBar"
+
+let useStyles = makeStyles({
+  root: {
+    height: "100vh",
+    background: "pink",
+    display: "grid",
+    gridTemplateColumns: "minmax(250px, 1fr) 3fr",
+    gridTemplateRows: "repeat(3, 1fr)",
+  },
+})
 
 function App() {
+  let classes = useStyles()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Paper className={classes.root}>
+      <CssBaseline />
+      <SideBar />
+      <Conversation />
+    </Paper>
+  )
 }
 
-export default App;
+export default App
