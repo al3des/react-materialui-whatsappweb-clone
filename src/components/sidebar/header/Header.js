@@ -4,6 +4,7 @@ import { Box, Grid, IconButton, makeStyles } from "@material-ui/core"
 import UpdateIcon from "@material-ui/icons/Update"
 import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
+import Search from "./Search"
 
 let useStyles = makeStyles({
   grid: {
@@ -19,7 +20,7 @@ export default function Header() {
   return (
     <Box className={classes.grid}>
       <Grid container alignItems="center" justify="space-between">
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <img src={me.avatarUrl} alt="profile" />
         </Grid>
         <Grid item>
@@ -34,7 +35,9 @@ export default function Header() {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid container>search</Grid>
+      <Grid container>
+        <Search />
+      </Grid>
     </Box>
   )
 }
