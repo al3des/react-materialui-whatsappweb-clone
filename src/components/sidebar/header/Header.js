@@ -16,6 +16,10 @@ let useStyles = makeStyles({
   profile: {
     cursor: "pointer",
   },
+  avatar: {
+    maxHeight: "50px",
+    objectFit: "contain",
+  },
 })
 
 export default function Header() {
@@ -38,7 +42,7 @@ export default function Header() {
               })
             }
           >
-            <img src={me.avatarUrl} alt="profile" />
+            <img src={me.avatarUrl} alt="profile" className={classes.avatar} />
           </Grid>
           <Grid item>
             <IconButton>

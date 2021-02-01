@@ -7,6 +7,10 @@ import MoreVertIcon from "@material-ui/icons/MoreVert"
 import { MessagesContext } from "../../context/MessagesContext"
 
 let useStyles = makeStyles({
+  avatar: {
+    maxHeight: "50px",
+    objectFit: "contain",
+  },
   grow: {
     flexGrow: "1",
   },
@@ -24,7 +28,11 @@ export default function Header() {
       {activeContact && (
         <Grid container alignItems="center">
           <Grid item xs={1}>
-            <img src={activeContact.avatarUrl} alt="" />
+            <img
+              src={activeContact.avatarUrl}
+              alt=""
+              className={classes.avatar}
+            />
           </Grid>
           <Grid item className={classes.grow}>
             {activeContact.name}

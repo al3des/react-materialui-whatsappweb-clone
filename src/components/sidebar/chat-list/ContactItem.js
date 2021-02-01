@@ -1,10 +1,24 @@
-import { Grid, Typography, Divider } from "@material-ui/core"
+import { Grid, Typography, Divider, makeStyles } from "@material-ui/core"
+
+let useStyles = makeStyles({
+  avatar: {
+    maxHeight: "60px",
+    objectFit: "contain",
+  },
+})
 
 export default function ContactItem({ contact }) {
+  let classes = useStyles()
+
   return (
     <Grid container alignItems="center">
       <Grid item xs={3}>
-        <img src={contact.avatarUrl} alt="" style={{ width: "100%" }} />
+        <img
+          src={contact.avatarUrl}
+          alt=""
+          style={{ width: "100%" }}
+          className={classes.avatar}
+        />
       </Grid>
       <Grid item xs={7} container direction="column">
         <Grid item xs={12}>
