@@ -1,6 +1,7 @@
 import { CssBaseline, makeStyles, Paper } from "@material-ui/core"
 import Conversation from "./containers/Conversation"
 import SideBar from "./containers/SideBar"
+import ConversationSettingsProvider from "./context/ConversationSettingsContext"
 import MessagesProvider from "./context/MessagesContext"
 import UserSettingsProvider from "./context/UserSettingsContext"
 
@@ -23,7 +24,9 @@ function App() {
         <UserSettingsProvider>
           <SideBar />
         </UserSettingsProvider>
-        <Conversation />
+        <ConversationSettingsProvider>
+          <Conversation />
+        </ConversationSettingsProvider>
       </Paper>
     </MessagesProvider>
   )
