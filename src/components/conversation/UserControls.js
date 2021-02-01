@@ -19,7 +19,7 @@ export default function UserControls() {
   let classes = useStyles()
   return (
     <Paper>
-      <Grid container>
+      <Grid container alignItems="center">
         <Grid item>
           <IconButton>
             <EmojiEmotionsIcon />
