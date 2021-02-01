@@ -1,8 +1,12 @@
+import React, { useContext } from "react"
+import { MessagesContext } from "../context/MessagesContext"
+
 import { makeStyles } from "@material-ui/core"
 
 import Header from "../components/conversation/Header"
 import Conversation from "../components/conversation/Conversation"
 import UserControls from "../components/conversation/UserControls"
+import NoContactSelected from "../components/conversation/NoContactSelected"
 
 let useStyles = makeStyles({
   root: {
@@ -11,16 +15,31 @@ let useStyles = makeStyles({
     display: "grid",
     gridTemplateRows: "minmax(50px, 1fr) 10fr minmax(30px, 1fr)",
   },
+  noContact: {
+    margin: "auto",
+  },
 })
 
 export default function ConversationContainer() {
-  let classes = useStyles()
+  let {
+    state: { activeContact },
+  } = useContext(MessagesContext)
 
+  let classes = useStyles()
+  console.log(activeContact)
   return (
-    <div className={classes.root}>
-      <Header />
-      <Conversation />
-      <UserControls />
-    </div>
+    <>
+      {activeContact ? (
+        <div className={classes.root}>
+          <Header />
+          <Conversation />
+          <UserControls />
+        </div>
+      ) : (
+        <div className={classes.noContact}>
+          <NoContactSelected />
+        </div>
+      )}
+    </>
   )
 }
