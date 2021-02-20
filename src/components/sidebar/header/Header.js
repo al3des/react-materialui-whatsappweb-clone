@@ -3,10 +3,11 @@ import { generateNewContact } from "../../../data/contacts"
 import { Box, Grid, IconButton, makeStyles } from "@material-ui/core"
 import UpdateIcon from "@material-ui/icons/Update"
 import ChatIcon from "@material-ui/icons/Chat"
-import MoreVertIcon from "@material-ui/icons/MoreVert"
 import Search from "./Search"
 import { useContext } from "react"
 import { UserSettingsContext } from "../../../context/UserSettingsContext"
+
+import MoreMenu from "../header/menus/more"
 
 let useStyles = makeStyles({
   grid: {
@@ -51,9 +52,7 @@ export default function Header() {
             <IconButton>
               <ChatIcon />
             </IconButton>
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
+            <MoreMenu />
           </Grid>
         </Grid>
         <Grid container>

@@ -5,9 +5,11 @@ import SearchIcon from "@material-ui/icons/Search"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
 
 import { MessagesContext } from "../../context/MessagesContext"
+import { ConversationSettingsContext } from "../../context/ConversationSettingsContext"
 
 let useStyles = makeStyles({
   avatar: {
+    maxWidth: "100%",
     maxHeight: "50px",
     objectFit: "contain",
   },
@@ -21,6 +23,11 @@ export default function Header() {
     state: { activeContact },
   } = React.useContext(MessagesContext)
 
+  let {
+    state: { drawerOpen },
+    dispatch,
+  } = React.useContext(ConversationSettingsContext)
+  console.log(drawerOpen)
   let classes = useStyles()
 
   return (
@@ -38,7 +45,9 @@ export default function Header() {
             {activeContact.name}
           </Grid>
           <Grid item>
-            <IconButton>
+            <IconButton
+              onClick={() => dispatch({ type: "SEARCH_CONVERSATION" })}
+            >
               <SearchIcon />
             </IconButton>
             <IconButton>
