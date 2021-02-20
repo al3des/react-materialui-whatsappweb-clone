@@ -1,34 +1,42 @@
-import { CssBaseline, makeStyles, Paper } from "@material-ui/core"
+import {
+  CssBaseline,
+  makeStyles,
+  Paper,
+  ThemeProvider,
+} from "@material-ui/core"
 import Conversation from "./containers/Conversation"
 import SideBar from "./containers/SideBar"
 import ConversationSettingsProvider from "./context/ConversationSettingsContext"
 import MessagesProvider from "./context/MessagesContext"
 import UserSettingsProvider from "./context/UserSettingsContext"
 
-let useStyles = makeStyles({
+import { theme } from "./themes/theme"
+
+let useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
-    background: "pink",
     display: "grid",
-    gridTemplateColumns: "minmax(300px, 1fr) 3fr",
+    gridTemplateColumns: "minmax(450px, 1fr) 3fr",
     gridTemplateRows: "repeat(3, 1fr)",
   },
-})
+}))
 
 function App() {
   let classes = useStyles()
   return (
-    <MessagesProvider>
-      <Paper className={classes.root}>
-        <CssBaseline />
-        <UserSettingsProvider>
-          <SideBar />
-        </UserSettingsProvider>
-        <ConversationSettingsProvider>
-          <Conversation />
-        </ConversationSettingsProvider>
-      </Paper>
-    </MessagesProvider>
+    <ThemeProvider theme={theme}>
+      <MessagesProvider>
+        <Paper className={classes.root}>
+          <CssBaseline />
+          <UserSettingsProvider>
+            <SideBar />
+          </UserSettingsProvider>
+          <ConversationSettingsProvider>
+            <Conversation />
+          </ConversationSettingsProvider>
+        </Paper>
+      </MessagesProvider>
+    </ThemeProvider>
   )
 }
 

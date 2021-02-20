@@ -6,14 +6,15 @@ import { MessagesContext } from "../../../context/MessagesContext"
 import { Grid, makeStyles } from "@material-ui/core"
 import ContactItem from "./ContactItem"
 
-let useStyles = makeStyles({
+let useStyles = makeStyles((theme) => ({
   root: {
     overflowY: "auto",
+    background: theme.palette.background.default,
   },
   contactItem: {
     cursor: "pointer",
   },
-})
+}))
 
 export default function ChatList() {
   let { dispatch } = React.useContext(MessagesContext)

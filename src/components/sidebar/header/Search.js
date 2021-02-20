@@ -2,7 +2,7 @@ import { InputAdornment, makeStyles, TextField } from "@material-ui/core"
 
 import SearchIcon from "@material-ui/icons/Search"
 
-let useStyles = makeStyles({
+let useStyles = makeStyles((theme) => ({
   root: {
     padding: "0",
     margin: "auto 1em",
@@ -17,7 +17,7 @@ let useStyles = makeStyles({
   InputAdornment: {
     marginTop: "0!important",
   },
-})
+}))
 
 export default function Search() {
   let classes = useStyles()

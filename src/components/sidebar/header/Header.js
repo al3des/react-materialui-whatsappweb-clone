@@ -9,7 +9,7 @@ import { UserSettingsContext } from "../../../context/UserSettingsContext"
 
 import MoreMenu from "../header/menus/more"
 
-let useStyles = makeStyles({
+let useStyles = makeStyles((theme) => ({
   grid: {
     display: "grid",
     gridTemplateRows: "1fr 1fr",
@@ -21,7 +21,10 @@ let useStyles = makeStyles({
     maxHeight: "50px",
     objectFit: "contain",
   },
-})
+  search: {
+    background: theme.palette.background.default,
+  },
+}))
 
 export default function Header() {
   let { dispatch } = useContext(UserSettingsContext)
@@ -55,7 +58,7 @@ export default function Header() {
             <MoreMenu />
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container className={classes.search}>
           <Search />
         </Grid>
       </Box>
