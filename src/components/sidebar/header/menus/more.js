@@ -1,33 +1,60 @@
-import { IconButton, Menu, MenuItem } from "@material-ui/core"
+import {
+  IconButton,
+  MenuList,
+  MenuItem,
+  Popper,
+  Grow,
+  ClickAwayListener,
+  Paper,
+} from "@material-ui/core"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
 
 import { withMenu } from "../../../utils/HOCs/menu"
 
-export function More({ anchorEl, handleClose, handleClick }) {
+export function More({ open, anchorEl, handleClose, handleClick }) {
   return (
     <>
       <IconButton onClick={handleClick}>
         <MoreVertIcon />
       </IconButton>
-      <Menu
-        id="simple-menu"
+      <Popper
+        open={open}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+        role={undefined}
+        transition
+        disablePortal
+        placement="bottom-end"
+        style={{ zIndex: "99" }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+        {({ TransitionProps }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin: "top right",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>New Group</MenuItem>
+                  <MenuItem onClick={handleClose}>My Create a room</MenuItem>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>Archived</MenuItem>
+                  <MenuItem onClick={handleClose}>Starred</MenuItem>
+                  <MenuItem onClick={handleClose}>Settings</MenuItem>
+                  <MenuItem onClick={handleClose}>Log out</MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     </>
   )
 }

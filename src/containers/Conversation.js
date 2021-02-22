@@ -16,7 +16,7 @@ let useStyles = makeStyles({
     gridTemplateRows: "minmax(50px, 1fr) 10fr minmax(30px, 1fr)",
   },
   noContact: {
-    margin: "auto",
+    margin: "0",
   },
 })
 
@@ -26,7 +26,6 @@ export default function ConversationContainer() {
   } = useContext(MessagesContext)
 
   let classes = useStyles()
-  console.log(activeContact)
   return (
     <>
       {activeContact ? (

@@ -11,9 +11,12 @@ let useStyles = makeStyles((theme) => ({
     alignContent: "center",
   },
   container: {
-    maxWidth: "60%",
+    maxWidth: "50%",
     margin: "auto",
     textAlign: "center",
+  },
+  title: {
+    marginBottom: ".5em",
   },
   img: {
     maxWidth: "60%",
@@ -34,7 +37,9 @@ export default function NoContactSelected() {
             className={classes.img}
           />
         </div>
-        <Typography variant="h4">Keep your phone conected</Typography>
+        <Typography variant="h4" className={classes.title}>
+          Keep your phone conected
+        </Typography>
         <Typography>
           WhatsApp connects to your phone to sync messages. To reduce data
           usage, connect your phone to Wi-Fi
