@@ -5,14 +5,10 @@ import { generateNewContact } from "../../../data/contacts"
 
 import {
   Box,
+  Container,
   Drawer,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
   IconButton,
-  Input,
   InputAdornment,
-  InputLabel,
   makeStyles,
   TextField,
   Typography,
@@ -20,7 +16,6 @@ import {
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import EditIcon from "@material-ui/icons/Edit"
-import AccountCircle from "@material-ui/icons/AccountCircle"
 
 let useStyles = makeStyles((theme) => ({
   drawer: {
@@ -47,13 +42,10 @@ let useStyles = makeStyles((theme) => ({
       maxWidth: "80%",
     },
   },
-  label: {
-    ".MuiInputLabel-filled": {
-      color: "red",
-    },
-    "&.Mui-focused": {
-      // position: "relative",
-      // background: "rgba(0,0,0,0)",
+  textFields: {
+    "& .Mui-TextField": {
+      marginBottom: "2em",
+      name: "MuiTextField",
     },
   },
 }))
@@ -81,54 +73,42 @@ export default function UserSettings(props) {
         <Typography variant="h6">Profile</Typography>
       </Box>
       <Box className={classes.userInfo}>
-        <img src={me.avatarUrl} alt="" />
-        <Box>
-          <FormControl>
-            <InputLabel
-              htmlFor="name"
-              classes={{ filled: classes.label }}
-              variant="filled"
-            >
-              Your Name
-            </InputLabel>
-            <Input
-              id="name"
-              endAdornment={
-                <InputAdornment position="end">
-                  <EditIcon />
-                </InputAdornment>
-              }
+        <Container>
+          <img src={me.avatarUrl} alt="" />
+          <Box className={classes.textFields}>
+            <TextField
+              label="Your Name"
+              // variant="outlined"
+              fullWidth
+              InputLabelProps={{
+                classes: {},
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <EditIcon />
+                  </InputAdornment>
+                ),
+              }}
+              helperText="This is not your username or pin. This name will be visible to your WhatsApp contacts."
             />
-          </FormControl>
-          <TextField
-            label="Your Name"
-            variant="standard"
-            fullWidth
-            InputLabelProps={{
-              classes: {},
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <EditIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          {/* <FormControl className={classes.margin}>
-            <InputLabel htmlFor="input-with-icon-adornment">
-              With a start adornment
-            </InputLabel>
-            <Input
-              id="input-with-icon-adornment"
-              endAdornment={
-                <InputAdornment position="end">
-                  <AccountCircle />
-                </InputAdornment>
-              }
+            <TextField
+              label="About"
+              // variant="outlined"
+              fullWidth
+              InputLabelProps={{
+                classes: {},
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <EditIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
-            </FormControl>*/}
-        </Box>
+          </Box>
+        </Container>
       </Box>
     </Drawer>
   )

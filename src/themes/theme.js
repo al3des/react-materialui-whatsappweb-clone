@@ -26,13 +26,10 @@ theme.overrides = {
 
   MuiFilledInput: {
     root: {
-      backgroundColor: theme.palette.grey[800],
+      backgroundColor: theme.palette.background.paper,
       "&:hover": {
-        backgroundColor: `${theme.palette.grey[800]} !important`,
+        backgroundColor: theme.palette.background.paper,
       },
-    },
-    focused: {
-      backgroundColor: `${theme.palette.grey[800]} !important`,
     },
   },
 }

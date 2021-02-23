@@ -1,11 +1,4 @@
-import {
-  Grid,
-  Typography,
-  Divider,
-  makeStyles,
-  Box,
-  Slide,
-} from "@material-ui/core"
+import { Typography, Divider, makeStyles, Box, Slide } from "@material-ui/core"
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import { useState } from "react"
@@ -23,7 +16,7 @@ let useStyles = makeStyles((theme) => ({
                         `,
     columnGap: "1em",
     "&:hover": {
-      backgroundColor: theme.palette.grey[800],
+      backgroundColor: theme.palette.background.paper,
     },
     alignItems: "center",
     padding: "0 .5em",

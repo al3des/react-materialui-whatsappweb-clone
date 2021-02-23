@@ -18,7 +18,7 @@ let useStyles = makeStyles((theme) => ({
       width: "0.4em",
     },
     "*::-webkit-scrollbar-thumb": {
-      backgroundColor: theme.palette.grey[400],
+      backgroundColor: theme.palette.grey[700],
     },
   },
   root: {
