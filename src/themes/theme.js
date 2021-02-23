@@ -24,18 +24,15 @@ theme.overrides = {
     },
   },
 
-  MuiInputBase: {
-    focused: {
-      backgroundColor: `${theme.palette.grey[800]} !important`,
-    },
-  },
-
   MuiFilledInput: {
     root: {
       backgroundColor: theme.palette.grey[800],
       "&:hover": {
-        backgroundColor: theme.palette.grey[800],
+        backgroundColor: `${theme.palette.grey[800]} !important`,
       },
+    },
+    focused: {
+      backgroundColor: `${theme.palette.grey[800]} !important`,
     },
   },
 }

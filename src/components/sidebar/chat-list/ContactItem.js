@@ -1,62 +1,109 @@
-import { Grid, Typography, Divider, makeStyles } from "@material-ui/core"
+import {
+  Grid,
+  Typography,
+  Divider,
+  makeStyles,
+  Box,
+  Slide,
+} from "@material-ui/core"
+
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import { useState } from "react"
 
 let useStyles = makeStyles((theme) => ({
   root: {
+    display: "grid",
+    gridTemplateColumns: "1fr 5fr 1fr",
+    gridTemplateRows: ".3fr 1fr 1fr .3fr",
+    gridTemplateAreas: `'.    .     .'
+                        'img name time'
+                        'img preview preview'
+                        '.    .     .'
+                        '.   divider divider'
+                        `,
+    columnGap: "1em",
     "&:hover": {
       backgroundColor: theme.palette.grey[800],
     },
-    padding: ".5em 0",
-    position: "relative",
+    alignItems: "center",
+    padding: "0 .5em",
   },
-  active: {
-    backgroundColor: theme.palette.grey[800],
-  },
-
   avatar: {
-    maxHeight: "60px",
-    objectFit: "contain",
+    gridArea: "img",
   },
-  msgText: {
-    color: theme.palette.text.secondary,
+  name: {
+    gridArea: "name",
+    fontSize: "1rem",
   },
-  date: {
+  preview: {
+    gridArea: "preview",
+    fontSize: ".8rem",
+    color: theme.palette.text.disabled,
     display: "flex",
-    justifyContent: "flex-end",
-    paddingRight: "1em",
+    alignItems: "center",
+    maxWidth: "100%",
+  },
+  time: {
+    gridArea: "time",
+    alignSelf: "end",
+    justifySelf: "end",
+    color: theme.palette.text.disabled,
+  },
+  icon: {
+    gridArea: "preview",
+    justifySelf: "end",
+    color: theme.palette.text.disabled,
+  },
+  divider: {
+    gridArea: "divider",
+    alignSelf: "end",
   },
 }))
 
 export default function ContactItem({ contact }) {
+  let [hovered, setHovered] = useState(false)
   let classes = useStyles()
 
   return (
     <>
-      <Grid container alignItems="center" className={classes.root}>
-        <Grid item xs={2}>
-          <img
-            src={contact.avatarUrl}
-            alt=""
-            style={{ width: "100%" }}
-            className={classes.avatar}
-          />
-        </Grid>
-        <Grid item xs={8} container direction="column">
-          <Grid item xs={12}>
-            <Typography variant="h6" noWrap>
-              {contact.name}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography noWrap className={classes.msgText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={2} className={classes.date}>
-          <Typography variant="caption">14:12</Typography>
-        </Grid>
-      </Grid>
-      <Divider light variant="inset" />
+      <Box
+        className={classes.root}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <img
+          src={contact.avatarUrl}
+          alt=""
+          style={{ width: "100%" }}
+          className={classes.avatar}
+        />
+        <Typography variant="h6" noWrap className={classes.name}>
+          {contact.name}
+        </Typography>
+        <Box className={classes.preview}>
+          <Typography noWrap>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit.
+          </Typography>
+          <Box
+            className={classes.icon}
+            style={{ display: hovered ? "inline-block" : "none" }}
+          >
+            <Slide
+              in={hovered}
+              direction="left"
+              {...(hovered ? { timeout: 100 } : {})}
+            >
+              <ExpandMoreIcon />
+            </Slide>
+          </Box>
+        </Box>
+        <Typography variant="caption" className={classes.time}>
+          14:12
+        </Typography>
+
+        <Divider light className={classes.divider} />
+      </Box>
     </>
   )
 }

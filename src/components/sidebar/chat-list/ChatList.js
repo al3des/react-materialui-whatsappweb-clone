@@ -9,6 +9,7 @@ import ContactItem from "./ContactItem"
 let useStyles = makeStyles((theme) => ({
   root: {
     overflowY: "auto",
+    overflowX: "hidden",
     background: theme.palette.background.default,
   },
   contactItem: {
