@@ -13,6 +13,14 @@ import UserSettingsProvider from "./context/UserSettingsContext"
 import { theme } from "./themes/theme"
 
 let useStyles = makeStyles((theme) => ({
+  "@global": {
+    "*::-webkit-scrollbar": {
+      width: "0.4em",
+    },
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.palette.grey[400],
+    },
+  },
   root: {
     height: "100vh",
     display: "grid",
