@@ -10,7 +10,7 @@ let useStyles = makeStyles((theme) => ({
   root: {
     gridRow: "1 / -1",
     display: "grid",
-    gridTemplateRows: "0 minmax(100px, 2fr) 10fr ",
+    gridTemplateRows: "0 minmax(100px, 1fr) 12fr ",
     borderRight: `1px solid ${theme.palette.grey[800]}`,
   },
 }))
@@ -21,12 +21,10 @@ export default function SideBarContainer() {
   const rootRef = React.useRef(null)
 
   return (
-    <>
-      <div className={classes.root} ref={rootRef}>
-        <UserSettings />
-        <Header />
-        <ChatList />
-      </div>
-    </>
+    <div className={classes.root} ref={rootRef}>
+      <UserSettings />
+      <Header />
+      <ChatList />
+    </div>
   )
 }

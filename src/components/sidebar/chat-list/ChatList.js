@@ -1,9 +1,9 @@
 import React from "react"
-import contacts from "../../../data/contacts"
 
 import { MessagesContext } from "../../../context/MessagesContext"
+import { ContactsContext } from "../../../context/ContactsContext"
 
-import { Grid, makeStyles } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
 import ContactItem from "./ContactItem"
 
 let useStyles = makeStyles((theme) => ({
@@ -11,6 +11,8 @@ let useStyles = makeStyles((theme) => ({
     overflowY: "auto",
     overflowX: "hidden",
     background: theme.palette.background.default,
+    display: "flex",
+    flexDirection: "column",
   },
   contactItem: {
     cursor: "pointer",
@@ -19,11 +21,13 @@ let useStyles = makeStyles((theme) => ({
 
 export default function ChatList() {
   let { dispatch } = React.useContext(MessagesContext)
+  let { contacts } = React.useContext(ContactsContext)
   let classes = useStyles()
+  console.log(contacts)
   return (
-    <Grid container justify="space-between" className={classes.root}>
+    <Box className={classes.root}>
       {contacts.map((contact) => (
-        <Grid
+        <Box
           key={contact.id}
           item
           xs={12}
@@ -31,8 +35,8 @@ export default function ChatList() {
           onClick={() => dispatch({ type: "SELECT_CONTACT", contact })}
         >
           <ContactItem contact={contact} />
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   )
 }

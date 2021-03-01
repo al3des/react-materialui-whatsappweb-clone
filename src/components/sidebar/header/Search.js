@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ContactsContext } from "../../../context/ContactsContext"
 
 import { InputAdornment, makeStyles, TextField } from "@material-ui/core"
 
@@ -32,14 +33,22 @@ let useStyles = makeStyles((theme) => ({
 }))
 
 export default function Search() {
+  let { dispatch } = useContext(ContactsContext)
+
   let [focused, setFocused] = useState(false)
+
   let classes = useStyles()
+
+  let handleSearch = ({ target }) => {
+    dispatch({ type: "SEARCH", value: target.value })
+  }
 
   return (
     <>
       <TextField
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
+        onChange={handleSearch}
         fullWidth
         variant="filled"
         className={classes.root}

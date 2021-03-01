@@ -1,11 +1,13 @@
+import { useContext } from "react"
+
 import { generateNewContact } from "../../../data/contacts"
+
+import { UserSettingsContext } from "../../../context/UserSettingsContext"
 
 import { Box, Divider, Grid, IconButton, makeStyles } from "@material-ui/core"
 import UpdateIcon from "@material-ui/icons/Update"
 import ChatIcon from "@material-ui/icons/Chat"
 import Search from "./Search"
-import { useContext } from "react"
-import { UserSettingsContext } from "../../../context/UserSettingsContext"
 
 import MoreMenu from "../header/menus/more"
 

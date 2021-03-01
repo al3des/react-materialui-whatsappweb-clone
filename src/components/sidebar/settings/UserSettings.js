@@ -52,10 +52,10 @@ let useStyles = makeStyles((theme) => ({
 
 export default function UserSettings(props) {
   let { state, dispatch } = useContext(UserSettingsContext)
+
   let me = generateNewContact("me", 0)
-  console.log(me)
   let classes = useStyles()
-  console.log(props)
+
   return (
     <Drawer
       className={classes.drawer}

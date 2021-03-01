@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core"
 import Conversation from "./containers/Conversation"
 import SideBar from "./containers/SideBar"
+import ContactsContextProvider from "./context/ContactsContext"
 import ConversationSettingsProvider from "./context/ConversationSettingsContext"
 import MessagesProvider from "./context/MessagesContext"
 import UserSettingsProvider from "./context/UserSettingsContext"
@@ -37,7 +38,9 @@ function App() {
         <Paper className={classes.root}>
           <CssBaseline />
           <UserSettingsProvider>
-            <SideBar />
+            <ContactsContextProvider>
+              <SideBar />
+            </ContactsContextProvider>
           </UserSettingsProvider>
           <ConversationSettingsProvider>
             <Conversation />
