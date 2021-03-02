@@ -1,10 +1,11 @@
 import { useContext, useState } from "react"
 import { ContactsContext } from "../../../context/ContactsContext"
 
-import { InputAdornment, makeStyles, TextField } from "@material-ui/core"
+import { InputAdornment, makeStyles } from "@material-ui/core"
 
 import SearchIcon from "@material-ui/icons/Search"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+import InputRounded from "../../utils/input-rounded"
 
 let useStyles = makeStyles((theme) => ({
   root: {
@@ -45,18 +46,13 @@ export default function Search() {
 
   return (
     <>
-      <TextField
+      <InputRounded
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         onChange={handleSearch}
         fullWidth
         variant="filled"
-        className={classes.root}
         InputProps={{
-          classes: {
-            root: classes.inputRoot,
-            input: classes.input,
-          },
           startAdornment: (
             <InputAdornment
               position="start"
@@ -69,7 +65,6 @@ export default function Search() {
               {focused ? <ArrowBackIcon /> : <SearchIcon />}
             </InputAdornment>
           ),
-          disableUnderline: true,
         }}
       />
     </>

@@ -1,13 +1,8 @@
-import {
-  Grid,
-  IconButton,
-  makeStyles,
-  Paper,
-  TextField,
-} from "@material-ui/core"
+import { Grid, IconButton, makeStyles, Paper } from "@material-ui/core"
 import MicIcon from "@material-ui/icons/Mic"
 import AttachFileIcon from "@material-ui/icons/AttachFile"
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions"
+import InputRounded from "../utils/input-rounded"
 
 let useStyles = makeStyles({
   grow: {
@@ -31,7 +26,7 @@ export default function UserControls() {
           </IconButton>
         </Grid>
         <Grid item className={classes.grow}>
-          <TextField fullWidth />
+          <InputRounded fullWidth variant="filled" />
         </Grid>
         <Grid item>
           <IconButton>
